@@ -97,7 +97,7 @@ jQuery(document).ready(function($){
 			let fr = new FileReader()
 			fr.onload = () => {
 				const $canvas = $('#uploaded-img')
-				$canvas.attr('src', fr.result)
+				$('#uploaded-img').attr('src', fr.result)
 				$canvas.cropper({
 					crop: event => {
 						croppedSize = {
@@ -134,17 +134,25 @@ jQuery(document).ready(function($){
 		}
 	})
 
+	$('#brightness-slider').on('input', function() {
+		$('.print-cols').css('filter', `brightness(${$(this).val()}%)`)
+		$('#slider-value').html(`${$(this).val() - 100}%`)
+		$('#result').css('filter', `brightness(${$(this).val()}%)`)
+	})
+
+	$('#brightness-btn').click(() => {
+		$('#brightness-slider').removeClass('d-none')
+		$('#crop-btn').removeClass('d-none')
+		$('#brightness-btn').addClass('d-none')
+
+		cropperInstance.disable()
+	})
+
 	// $('#crop-btn').click(() => {
-	// 	result = cropperInstance.getCroppedCanvas({
-	// 		fillColor: '#fff',
-	// 		imageSmoothingEnabled: true,
-	// 		imageSmoothingQuality: 'high',
-	// 		width: croppedSize.width,
-	// 		height: croppedSize.height,
-	// 		maxWidth: 4096,
-	// 		maxHeight: 4096,
-	// 	})
-	// 	$('#result').html(result)
+	// 	if (cropperInstance) cropperInstance.enable()
+	// 	$('#brightness-slider').addClass('d-none')
+	// 	$('#crop-btn').addClass('d-none')
+	// 	$('#brightness-btn').removeClass('d-none')
 	// })
 
 	$('#print').click(() => {

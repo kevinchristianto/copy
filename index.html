@@ -124,6 +124,10 @@
 										<div class="d-flex flex-column">
 											<h3 class="main_question mb-2 pb-0"><strong>2/3</strong>Crop Gambar yang Diupload</h3>
 											<img id="uploaded-img" style="max-width: 100%;" />
+											<!-- <a class="btn btn-success mt-3 align-self-end d-none" id="brightness-btn">
+												<i class="icon-sun-filled"></i>
+												Brightness
+											</a> -->
 											<!-- <a class="btn btn-success mt-3 align-self-end" id="crop-btn">
 												<i class="icon-check"></i>
 												Crop
@@ -133,8 +137,16 @@
 									<!-- /step-->
 
 									<div class="submit step">
-										<h3 class="main_question"><strong>3/3</strong>Hasil Cropping</h3>
-										<div id="result" class="pb-5" style="max-width: 100%;"></div>
+										<h3 class="main_question"><strong>3/3</strong>Atur Kecerahan</h3>
+										<div id="result" style="max-width: 100%;"></div>
+										<div class="row d-flex flex-row align-items-center">
+											<div class="col-11">
+												<input type="range" name="brightness" class="form-range pb-5 mt-3" id="brightness-slider" min="0" max="200" value="100">
+											</div>
+											<div class="col-1">
+												<p id="slider-value" class="text-right">0%</p>
+											</div>
+										</div>
 									</div>
 									<!-- /step-->
 								</div>
@@ -178,29 +190,29 @@
 
 	<div class="d-none" style="max-width: 210mm; max-height: 277mm; overflow: hidden; background-color: #fff;" id="print-page">
         <div class="row">
-			<div class="py-1 d-flex align-items-center justify-content-center" style="width: 85mm; height: 53mm;">
-				<img src="" id="print-col-1" style="max-width: 100%;" class="img-responsive">
+			<div class="my-1 d-flex align-items-center justify-content-center" style="width: 85mm; height: 53mm; overflow: hidden;">
+				<img src="" id="print-col-1" style="max-width: 100%; max-height: 100%;" class="img-responsive print-cols">
 			</div>
-			<div class="py-1 d-flex align-items-center justify-content-center" style="width: 85mm; height: 53mm;">
-				<img src="" id="print-col-2" style="max-width: 100%;" class="img-responsive">
+			<div class="my-1 d-flex align-items-center justify-content-center" style="width: 85mm; height: 53mm; overflow: hidden;">
+				<img src="" id="print-col-2" style="max-width: 100%; max-height: 100%;" class="img-responsive print-cols">
 			</div>
-			<div class="py-1 d-flex align-items-center justify-content-center" style="width: 85mm; height: 53mm;">
-				<img src="" id="print-col-3" style="max-width: 100%;" class="img-responsive">
+			<div class="my-1 d-flex align-items-center justify-content-center" style="width: 85mm; height: 53mm; overflow: hidden;">
+				<img src="" id="print-col-3" style="max-width: 100%; max-height: 100%;" class="img-responsive print-cols">
 			</div>
-			<div class="py-1 d-flex align-items-center justify-content-center" style="width: 85mm; height: 53mm;">
-				<img src="" id="print-col-4" style="max-width: 100%;" class="img-responsive">
+			<div class="my-1 d-flex align-items-center justify-content-center" style="width: 85mm; height: 53mm; overflow: hidden;">
+				<img src="" id="print-col-4" style="max-width: 100%; max-height: 100%;" class="img-responsive print-cols">
 			</div>
-			<div class="py-1 d-flex align-items-center justify-content-center" style="width: 85mm; height: 53mm;">
-				<img src="" id="print-col-5" style="max-width: 100%;" class="img-responsive">
+			<div class="my-1 d-flex align-items-center justify-content-center" style="width: 85mm; height: 53mm; overflow: hidden;">
+				<img src="" id="print-col-5" style="max-width: 100%; max-height: 100%;" class="img-responsive print-cols">
 			</div>
-			<div class="py-1 d-flex align-items-center justify-content-center" style="width: 85mm; height: 53mm;">
-				<img src="" id="print-col-6" style="max-width: 100%;" class="img-responsive">
+			<div class="my-1 d-flex align-items-center justify-content-center" style="width: 85mm; height: 53mm; overflow: hidden;">
+				<img src="" id="print-col-6" style="max-width: 100%; max-height: 100%;" class="img-responsive print-cols">
 			</div>
-			<div class="py-1 d-flex align-items-center justify-content-center" style="width: 85mm; height: 53mm;">
-				<img src="" id="print-col-7" style="max-width: 100%;" class="img-responsive">
+			<div class="my-1 d-flex align-items-center justify-content-center" style="width: 85mm; height: 53mm; overflow: hidden;">
+				<img src="" id="print-col-7" style="max-width: 100%; max-height: 100%;" class="img-responsive print-cols">
 			</div>
-			<div class="py-1 d-flex align-items-center justify-content-center" style="width: 85mm; height: 53mm;">
-				<img src="" id="print-col-8" style="max-width: 100%;" class="img-responsive">
+			<div class="my-1 d-flex align-items-center justify-content-center" style="width: 85mm; height: 53mm; overflow: hidden;">
+				<img src="" id="print-col-8" style="max-width: 100%; max-height: 100%;" class="img-responsive print-cols">
 			</div>
 		</div>
 	</div>
@@ -212,14 +224,16 @@
 	<script src="js/common_scripts_min.js"></script>
 	<!-- Wizard script -->
 	<script src="js/registration_wizard_func.js"></script>
+	<!-- Cropper script -->
+	<script src="js/cropper.min.js"></script>
+	<script src="js/jquery-cropper.js"></script>
+	<!-- CamanJS script -->
+	<script src="js/caman.full.min.js"></script>
 	<!-- Menu script -->
 	<script src="js/velocity.min.js"></script>
 	<script src="js/main.js"></script>
 	<!-- Theme script -->
 	<script src="js/functions.js"></script>
-	<!-- Cropper script -->
-	<script src="js/cropper.min.js"></script>
-	<script src="js/jquery-cropper.js"></script>
 
 </body>
 </html>
